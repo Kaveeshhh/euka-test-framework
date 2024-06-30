@@ -29,6 +29,7 @@ public class TC01_StudentEnrollmentTest {
 
     @BeforeClass
     public void setup() {
+        System.setProperty("java.awt.headless", "true");
         //Get Config file data
         PropertyFileReader propertyFileReader = new PropertyFileReader();
         url = propertyFileReader.getProperty("url");
