@@ -24,4 +24,4 @@ jobs:
           overwrite-settings: true
 
       - name: Build and test with Maven
-        run: mvn clean test
+        run: mvn test -DisHeadless=true

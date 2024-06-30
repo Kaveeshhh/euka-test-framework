@@ -18,7 +18,7 @@ public class TC01_StudentEnrollmentTest {
     private SoftAssert softAssert;
     private String url;
     private String browser;
-    private Boolean isHeadless;
+    private String isHeadless;
     private String userName;
     private String password;
     private String studentFirstName;
@@ -33,7 +33,7 @@ public class TC01_StudentEnrollmentTest {
         PropertyFileReader propertyFileReader = new PropertyFileReader();
         url = propertyFileReader.getProperty("url");
         browser = propertyFileReader.getProperty("browser");
-        isHeadless = Boolean.valueOf(propertyFileReader.getProperty("isHeadless"));
+        isHeadless = propertyFileReader.getProperty("isHeadless");
         userName = propertyFileReader.getProperty("username");
         password = propertyFileReader.getProperty("password");
         studentFirstName = propertyFileReader.getProperty("studentFirstName");
@@ -42,7 +42,7 @@ public class TC01_StudentEnrollmentTest {
         term = propertyFileReader.getProperty("term");
 
         //Initialize Browser & navigate to URL
-        BasePage.initializeBrowser(browser, isHeadless);
+        BasePage.initializeBrowser(browser, Boolean.valueOf(System.getProperty("isHeadless", isHeadless)));
         BasePage.createContext();
         BasePage.navigateToUrl(url);
 
