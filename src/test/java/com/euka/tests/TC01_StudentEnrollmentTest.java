@@ -72,7 +72,7 @@ public class TC01_StudentEnrollmentTest {
         landingPage.clickManagePrograms();
 
         //Close the Rating popup if it is visible
-        manageProgramsPage.closePopup();
+      //  manageProgramsPage.closePopup();
 
         //Click 1st complete enrolment button
         manageProgramsPage.clickCompleteEnrolment();
