@@ -42,7 +42,7 @@ public class TC01_StudentEnrollmentTest {
         term = propertyFileReader.getProperty("term");
 
         //Initialize Browser & navigate to URL
-        BasePage.initializeBrowser(browser, false/*Boolean.valueOf(System.getProperty("isHeadless", isHeadless))*/);
+        BasePage.initializeBrowser(browser, Boolean.valueOf(System.getProperty("isHeadless", isHeadless)));
         BasePage.createContext();
         BasePage.navigateToUrl(url);
 
