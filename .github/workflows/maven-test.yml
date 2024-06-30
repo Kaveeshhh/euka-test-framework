@@ -16,9 +16,12 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '11'  # Adjust Java version as per your project requirements
+          java-version: '11'
+          distribution: 'adopt'  # Specify the distribution type
+          server-id: github
+          server-username: ${{ github.actor }}
+          server-password: ${{ github.token }}
+          overwrite-settings: true
 
       - name: Build and test with Maven
         run: mvn clean test
-
-      # You can add additional steps here for deploying or further testing
