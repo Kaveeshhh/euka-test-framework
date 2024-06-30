@@ -1,0 +1,24 @@
+name: Maven Test
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Adjust Java version as per your project requirements
+
+      - name: Build and test with Maven
+        run: mvn clean test
+
+      # You can add additional steps here for deploying or further testing
