@@ -80,7 +80,7 @@ public class TC01_StudentEnrollmentTest {
 
         //Enter First Name Last name and click Next
         nameSelectionPage.enterName(studentFirstName, studentLastName);
-        /*nameSelectionPage.clickNext();
+        nameSelectionPage.clickNext();
 
         //Select Grade & click Next
         gradeSelectionPage.selectGrade(grade);
@@ -104,7 +104,7 @@ public class TC01_StudentEnrollmentTest {
         softAssert.assertEquals(values[0], grade, "Grade Incorrect");
         softAssert.assertEquals(values[1], term, "Term Incorrect");
 
-        softAssert.assertAll();*/
+        softAssert.assertAll();
     }
 
     @AfterMethod
