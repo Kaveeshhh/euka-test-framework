@@ -19,6 +19,7 @@ public class TC01_StudentEnrollmentTest {
     private String url;
     private String browser;
     private String isHeadless;
+    private String isRunRemotely;
     private String userName;
     private String password;
     private String studentFirstName;
@@ -34,6 +35,7 @@ public class TC01_StudentEnrollmentTest {
         url = propertyFileReader.getProperty("url");
         browser = propertyFileReader.getProperty("browser");
         isHeadless = propertyFileReader.getProperty("isHeadless");
+        isRunRemotely = propertyFileReader.getProperty("isRunRemotely");
         userName = propertyFileReader.getProperty("username");
         password = propertyFileReader.getProperty("password");
         studentFirstName = propertyFileReader.getProperty("studentFirstName");
@@ -42,8 +44,8 @@ public class TC01_StudentEnrollmentTest {
         term = propertyFileReader.getProperty("term");
 
         //Initialize Browser & navigate to URL
-        BasePage.initializeBrowser(browser, Boolean.valueOf(System.getProperty("isHeadless", isHeadless)));
-        BasePage.createContext();
+        BasePage.initializeBrowser(browser, Boolean.valueOf(System.getProperty("isHeadless", isHeadless)), Boolean.valueOf(System.getProperty("isRunRemotely", isRunRemotely)));
+        BasePage.createContext(Boolean.valueOf(System.getProperty("isRunRemotely", isRunRemotely)));
         BasePage.navigateToUrl(url);
 
         //Initialize Pages
@@ -76,7 +78,7 @@ public class TC01_StudentEnrollmentTest {
         //Click 1st complete enrolment button
         manageProgramsPage.clickCompleteEnrolment();
 
-        //Enter First Name LAst name and click Next
+        //Enter First Name Last name and click Next
         nameSelectionPage.enterName(studentFirstName, studentLastName);
         /*nameSelectionPage.clickNext();
 

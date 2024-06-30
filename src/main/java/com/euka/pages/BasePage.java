@@ -12,7 +12,7 @@ public class BasePage {
     protected static BrowserContext context;
     protected static Page page;
 
-    public static void initializeBrowser(String browserName, Boolean headless) {
+    public static void initializeBrowser(String browserName, Boolean headless, Boolean isRunRemotely) {
         playwright = Playwright.create();
         switch (browserName.toLowerCase()) {
             case "chrome":
@@ -31,14 +31,21 @@ public class BasePage {
                 System.out.println("<<<<<   please add a correct browser name  >>>>>>");
                 break;
         }
-
+        if(isRunRemotely){
+            System.setProperty("java.awt.headless", "true");
+        }
     }
 
-    public static void createContext() {
+    public static void createContext(Boolean isRunRemotely) {
+        if(!isRunRemotely){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screenSize.getWidth();
         int height = (int) screenSize.getHeight();
         context = browser.newContext(new Browser.NewContextOptions().setViewportSize(width, height));
+        }
+        else {
+            context = browser.newContext();
+        }
         page = context.newPage();
     }
 
