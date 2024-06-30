@@ -29,7 +29,6 @@ public class TC01_StudentEnrollmentTest {
 
     @BeforeClass
     public void setup() {
-        System.setProperty("java.awt.headless", "true");
         //Get Config file data
         PropertyFileReader propertyFileReader = new PropertyFileReader();
         url = propertyFileReader.getProperty("url");
@@ -43,7 +42,7 @@ public class TC01_StudentEnrollmentTest {
         term = propertyFileReader.getProperty("term");
 
         //Initialize Browser & navigate to URL
-        BasePage.initializeBrowser(browser, Boolean.valueOf(System.getProperty("isHeadless", isHeadless)));
+        BasePage.initializeBrowser(browser, false/*Boolean.valueOf(System.getProperty("isHeadless", isHeadless))*/);
         BasePage.createContext();
         BasePage.navigateToUrl(url);
 
@@ -67,11 +66,11 @@ public class TC01_StudentEnrollmentTest {
     }
 
     @Test(priority = 1)
-    public void studentEnrollmentTest() throws InterruptedException {
+    public void studentEnrollmentTest() {
         //Click Manage Programs
         landingPage.clickManagePrograms();
 
-        /*//Close the Rating popup if it is visible
+        //Close the Rating popup if it is visible
         manageProgramsPage.closePopup();
 
         //Click 1st complete enrolment button
@@ -79,7 +78,7 @@ public class TC01_StudentEnrollmentTest {
 
         //Enter First Name LAst name and click Next
         nameSelectionPage.enterName(studentFirstName, studentLastName);
-        nameSelectionPage.clickNext();
+        /*nameSelectionPage.clickNext();
 
         //Select Grade & click Next
         gradeSelectionPage.selectGrade(grade);

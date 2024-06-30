@@ -35,10 +35,10 @@ public class BasePage {
     }
 
     public static void createContext() {
-       /* Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screenSize.getWidth();
-        int height = (int) screenSize.getHeight();*/
-        context = browser.newContext(/*new Browser.NewContextOptions().setViewportSize(width, height)*/);
+        int height = (int) screenSize.getHeight();
+        context = browser.newContext(new Browser.NewContextOptions().setViewportSize(width, height));
         page = context.newPage();
     }
 
