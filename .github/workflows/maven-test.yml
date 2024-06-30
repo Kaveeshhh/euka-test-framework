@@ -1,27 +1,49 @@
-name: Maven Test
-
+name: Playwright Tests
 on:
   push:
-    branches:
-      - main  # Adjust branch name as needed
-
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 jobs:
-  build:
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
         with:
-          java-version: '11'
-          distribution: 'adopt'  # Specify the distribution type
-          server-id: github
-          server-username: ${{ github.actor }}
-          server-password: ${{ github.token }}
-          overwrite-settings: true
-
-      - name: Build and test with Maven
-        run: mvn test -DisHeadless=true
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build & Install
+        run: mvn -B install -D skipTests --no-transfer-progress
+      - name: Install Playwright
+        run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
+      - name: Run tests
+        run: mvn test
+#name: Maven Test
+#
+#on:
+#  push:
+#    branches:
+#      - main  # Adjust branch name as needed
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Set up JDK
+#        uses: actions/setup-java@v2
+#        with:
+#          java-version: '11'
+#          distribution: 'adopt'  # Specify the distribution type
+#          server-id: github
+#          server-username: ${{ github.actor }}
+#          server-password: ${{ github.token }}
+#          overwrite-settings: true
+#
+#      - name: Build and test with Maven
+#        run: mvn test -DisHeadless=true
