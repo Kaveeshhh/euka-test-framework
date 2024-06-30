@@ -1,23 +1,14 @@
 package com.euka.pages;
 
 public class EnrolmentConfirmationPage extends BasePage {
-    private final String nextButtonLocator = "//button[text()='Next']";
-    private final String studentNameLocator = "//p[text()='Enrolled to']/following-sibling::p";
-    private final String startingCourseLocator = "//p[text()='Starting course']/following-sibling::p";
-
-    public EnrolmentConfirmationPage() {
-        super();
-    }
-
-    public void clickNext() {
-        page.locator(nextButtonLocator).click();
-    }
+    private final String txtStudentName = "//p[text()='Enrolled to']/following-sibling::p";
+    private final String txtStartingCourse = "//p[text()='Starting course']/following-sibling::p";
 
     public String getStudentName() {
-        return page.locator(studentNameLocator).innerText();
+        return page.locator(txtStudentName).innerText();
     }
 
     public String getStartingCourse() {
-        return page.locator(startingCourseLocator).innerText();
+        return page.locator(txtStartingCourse).innerText();
     }
 }

@@ -11,7 +11,7 @@
 
     <test name="LoginTest">
         <classes>
-            <class name="com.euka.tests.StudentEnrollmentTest" />
+            <class name="com.euka.tests.TC01_StudentEnrollmentTest" />
         </classes>
     </test>
 </suite>

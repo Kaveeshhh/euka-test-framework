@@ -59,6 +59,7 @@ public class ExtentReportListener implements ITestListener {
     @Override
     public synchronized void onFinish(ITestContext context) {
         System.out.println(("<<<<<<   Test Suite End!  >>>>>>>>>>>"));
+        System.out.println(("<<<<<<   Extent Report Location :- "+OUTPUT_FOLDER+FILE_NAME+"  >>>>>>>>>>>"));
         extent.flush();
         test.remove();
     }

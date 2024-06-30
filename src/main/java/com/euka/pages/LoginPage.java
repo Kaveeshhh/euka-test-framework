@@ -1,13 +1,13 @@
 package com.euka.pages;
 
 public class LoginPage extends BasePage {
-    private final String usernameLocator = "//input[@type='username']";
-    private final String passwordLocator = "//input[@type='password']";
-    private final String loginButtonLocator = "//button[text()='Log in']";
+    private final String txtUserName = "//input[@type='username']";
+    private final String txtPassword = "//input[@type='password']";
+    private final String btnLogin = "//button[text()='Log in']";
 
     public void login(String username, String password) {
-        page.locator(usernameLocator).type(username);
-        page.locator(passwordLocator).type(password);
-        page.locator(loginButtonLocator).click();
+        page.locator(txtUserName).type(username);
+        page.locator(txtPassword).type(password);
+        page.locator(btnLogin).click();
     }
 }

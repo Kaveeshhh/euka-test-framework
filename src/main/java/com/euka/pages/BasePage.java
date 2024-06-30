@@ -2,6 +2,7 @@ package com.euka.pages;
 
 import com.microsoft.playwright.*;
 
+import java.awt.*;
 import java.nio.file.Paths;
 import java.util.Base64;
 
@@ -34,7 +35,10 @@ public class BasePage {
     }
 
     public static void createContext() {
-        context = browser.newContext(new Browser.NewContextOptions().setViewportSize(1920, 1080));
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int) screenSize.getWidth();
+        int height = (int) screenSize.getHeight();
+        context = browser.newContext(new Browser.NewContextOptions().setViewportSize(width, height));
         page = context.newPage();
     }
 

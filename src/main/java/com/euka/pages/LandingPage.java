@@ -1,19 +1,16 @@
 package com.euka.pages;
 
 public class LandingPage extends BasePage {
-    private final String manageProgramsCardLocator = "//p[text()='Manage Programs']";
+    private final String btnManageProgramsCard = "//p[text()='Manage Programs']";
     private final String lblWelcomeText = "//h2[text()='Welcome']";
 
 
-    public LandingPage() {
-        super();
-    }
-
     public void clickManagePrograms() {
-        page.locator(manageProgramsCardLocator).click();
+        page.locator(btnManageProgramsCard).click();
     }
 
     public boolean verifyWelcomeText(){
+        page.waitForSelector(lblWelcomeText);
         return page.locator(lblWelcomeText).isVisible();
     }
 
