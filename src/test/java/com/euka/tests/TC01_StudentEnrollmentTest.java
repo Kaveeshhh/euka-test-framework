@@ -71,15 +71,15 @@ public class TC01_StudentEnrollmentTest {
         //Click Manage Programs
         landingPage.clickManagePrograms();
 
-        //Close the Rating popup if it is visible
-      //  manageProgramsPage.closePopup();
+        /*//Close the Rating popup if it is visible
+        manageProgramsPage.closePopup();
 
         //Click 1st complete enrolment button
         manageProgramsPage.clickCompleteEnrolment();
 
         //Enter First Name LAst name and click Next
         nameSelectionPage.enterName(studentFirstName, studentLastName);
-       /* nameSelectionPage.clickNext();
+        nameSelectionPage.clickNext();
 
         //Select Grade & click Next
         gradeSelectionPage.selectGrade(grade);
